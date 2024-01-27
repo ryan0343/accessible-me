@@ -8,37 +8,50 @@
   <title>Accessible Me</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&family=Stick+No+Bills:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&family=Stick+No+Bills:wght@300&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-  <div class="container">
-    <div class="site-header">
+  <div class="container" id="top">
+    <header role="banner">
+      <ul class="skip-links">
+        <li><a href="#main-nav">Skip to main nav</a></li>
+        <li><a href="#main-content">Skip to main content</a></li>
+      </ul>
       <h1>Jam Box Studios</h1>
-      <div class="main-nav">
+      <!-- IRL: use of the nav tag would make role="navigation" unneccessary, but for the purposes of this assignment, we can do both. -->
+      <!-- IRL: ARIA roles can be used to "force" a div to act as another kind of tag -->
+      <nav role="navigation" class="main-nav" id="main-nav">
         <ul>
           <li><a href="#">Home</a></li>
           <li><a href="#">Products</a></li>
           <li><a href="#">Reservation</a></li>
           <li><a href="#">Studio</a></li>
         </ul>
-      </div>
-      <img src="https://placekitten.com/1200/900" class="banner">
-    </div>
-    <div class="main-content">
-      <h1>Welcome to Jam Box</h1>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus laboriosam praesentium nostrum ipsa eveniet, officia deserunt cumque eius esse enim, ipsam accusantium autem nihil quaerat sequi perferendis optio quia veritatis.</p>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam perferendis expedita sed itaque odit ipsam omnis, eos voluptates magni fugit culpa voluptatibus, inventore eaque, eligendi voluptatum! Voluptate iusto error voluptatibus.</p>
-      <div class="owner">
-        <h1>Meet the owner</h1>
-        <ul>
-          <li>Name: John Doe</li>
-          <li>Title: CEO</li>
-          <li>Email: johnjoe@jambox.ca</li>
-          <li>Phone: 613-000-0000</li>
+      </nav>
+      <img src="https://placekitten.com/1200/900" class="banner" alt="">
+    </header>
+    <main role="main" class="main-content" id="main-content">
+      <h2>Welcome to Jam Box</h2>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus laboriosam praesentium nostrum ipsa
+        eveniet, officia deserunt cumque eius esse enim, ipsam accusantium autem nihil quaerat sequi perferendis optio
+        quia veritatis.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam perferendis expedita sed itaque odit ipsam
+        omnis, eos voluptates magni fugit culpa voluptatibus, inventore eaque, eligendi voluptatum! Voluptate iusto
+        error voluptatibus.</p>
+      <div role="region" class="owner">
+        <!-- Add Schema here - Person -->
+        <h2>Meet the owner</h2>
+        <ul itemscope itemtype="https://schema.org/Person">
+          <li>Name: <span itemprop="givenName">John</span> <span itemprop="familyName">Doe</span></li>
+          <li>Title: <span itemprop="jobTitle">CEO</span></li>
+          <li>Email: <span itemprop="email">johnjoe@jambox.ca</span></li>
+          <li>Phone: <span itemprop="telephone">613-000-0000</span></li>
         </ul>
-        <h1>Address</h1>
+        <h3>Address</h3>
+        <!-- Add Schema here - Address -->
         <p>
           Jambox Studios
           123 Guitar Road,
@@ -46,21 +59,23 @@
           B3T 0L0
         </p>
       </div>
-      <div class="contact-section">
-        <h1>Contact Us</h1>
-        <form action="thanks.html">
-          <label>Full Name</label>
-          <input type="text" placeholder="Full Name">
-          <input type="text" placeholder="Email">
-          <input type="text" placeholder="Subject">
-          <b>Your Message</b>
-          <textarea></textarea>
-          <button type="submit">Send</button>
+      <div role="region" class="contact-section">
+        <h2 id="contact-us">Contact Us</h2>
+        <form role="form" action="thanks.html">
+          <label for="yourname">Full Name</label>
+          <input type="text" id="yourname" placeholder="Full Name">
+          <label for="youremail">Email</label>
+          <input type="text" id="youremail" placeholder="Email">
+          <label for="yoursubject">Subject</label>
+          <input type="text" id="yoursubject" placeholder="Subject">
+          <label for="yourmessage">Message</label>
+          <textarea id="yourmessage"></textarea>
+          <button aria-labelledby="contact-us" type="submit">Send</button>
         </form>
       </div>
-    </div>
+    </main>
     <div class="site-footer">
-      &copy; 2021 Jam Box Studios
+      &copy; 2021 Jam Box Studios <a class="skip-links" href="#top">Skip to top</a>
     </div>
   </div>
 </body>
