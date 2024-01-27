@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', Helvetica, sans-serif;
-  background-color: grey;
+  background-color: #EBEBEB;
   margin: 0;
   padding: 0;
 }
@@ -35,6 +35,7 @@ img {
 .main-nav ul li {
   flex: 1;
   text-align: center;
+  border: 1px solid #072126;
 }
 
 .main-nav ul li a {
@@ -69,3 +70,32 @@ form button {
 .site-footer {
   padding: 2rem 0;
 }
+
+/* ==== ASSIGNMENT CODE ==== */
+
+/* Hides skip links when not tabbed. */
+.skip-links{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.skip-links a{
+  position: absolute;
+  top: -3em;
+  background-color: black;
+  color:white;
+  padding: .5em 1em;
+  font-weight: bold;
+}
+
+/* Displays the skip links when user is focused on them. */
+.skip-links a:focus{
+  top: 0;
+}
+
+/* Recolours the nav items when the user hovers or is focused on them. */
+.main-nav ul li a:hover, .main-nav ul li a:focus, button:hover, button:focus, input:focus, input:hover, textarea:focus, textarea:hover, .site-footer .skip-links:focus{
+  background-color: #040d0e;
+  color: #EBEBEB;
+}
+
